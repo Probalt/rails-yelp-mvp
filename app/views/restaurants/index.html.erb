@@ -1,13 +1,15 @@
-<h1>List of all restaurants</h1>
-<br>
-<ul>
-<% @restaurants.each do |restaurant| %>
-  <li>
-    <strong><%= restaurant.name %></strong>
-    <p> <%= restaurant.category %></p>
-    <p><%= link_to "view details", restaurant_path(restaurant.id) %></p>
-  </li>
-<% end %>
-</ul>
+<div class="container m-2">
+  <h1>List of all restaurants</h1>
+  <br>
+  <ul class="list-inline d-flex">
+  <% @restaurants.each do |restaurant| %>
+    <li class="list-items card m-4 p-2 w-100">
+      <strong><%= link_to restaurant.name, restaurant_path(restaurant.id) %></strong>
+      <p> <%= restaurant.category %></p>
+      <%= link_to '🗑️', restaurant_path(restaurant.id), method: :delete %>
+    </li>
+  <% end %>
+  </ul>
 
-<%= link_to "create a restaurant", new_restaurant_path %>
+  <%= link_to "create a restaurant", new_restaurant_path %>
+</div>
